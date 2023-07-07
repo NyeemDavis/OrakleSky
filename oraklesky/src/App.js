@@ -32,6 +32,10 @@ function App() {
     }    
 }
 
+useEffect(() => {{
+  getWeatherData('London')
+}})
+
   return (
     <div className="App">
       <h1>OrakleSky</h1>
@@ -49,7 +53,7 @@ function App() {
         {
           weatherData.days.length > 0 
           ? (
-            <div className='container'>
+            <div className='days-container'>
               {weatherData.days.map((day, index) => {
                  return <Day dayInfo={day} />
               })}
