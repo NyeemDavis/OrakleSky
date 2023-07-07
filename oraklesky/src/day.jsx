@@ -12,8 +12,12 @@ const Day = ({dayInfo}) => {
             <div>
                 <h1>{date}</h1>
             </div>
+            <div className='temps'>
+                <h2>Temp: {dayInfo.temp}</h2>
+                <h2>Feels Like: {dayInfo.feelslike}</h2>
+            </div>
             <div>
-                <h2>{description}</h2>
+                <h2>{}</h2>
             </div>
         </div> 
     )

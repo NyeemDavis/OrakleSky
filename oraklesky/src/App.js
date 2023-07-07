@@ -20,15 +20,19 @@ function App() {
       alert ('Please enter a city name')
     } else {
       const API_URL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/?key=${API_KEY}`
-
-      const response = await fetch(`${API_URL}`)
-      const data = await response.json()
-      setWeatherData({
+      try {
+        const response = await fetch(`${API_URL}`)
+        const data = await response.json()
+        setWeatherData({
         city: data.resolvedAddress,
         days: data.days,
         timezone: data.timezone
       })
       console.log(data)
+      } catch (error) {
+        console.log(error)
+      }
+      
     }    
 }
 
