@@ -54,21 +54,23 @@ function App() {
   return (
     <div className="App">
       <h1>OrakleSky</h1>
+      <div className='input-form'>
+        <input 
+          placeholder='Enter city name'
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+
+        <Button onClick={() => getWeatherData(city)}>
+          Get Weather
+        </Button> 
+      </div>
+  
       <div className='error-container'>
         <ErrorBox status={error} errorMessage={'Please enter a city'}/>
       </div>
-      
-      <input 
-        placeholder='Enter city name'
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-      />
 
-      <button onClick={() => getWeatherData(city)}>
-        Get Weather
-      </button>
-
-      <div className='weatherInformation'>
+      <div className='weatherInfo-container'>
         <h1>
           {/* Conditional to render address if there is active data from api or not */}
             {
@@ -86,14 +88,14 @@ function App() {
           weatherData.days.length > 0 
           ? (
             <div className='days-container'>
-              {weatherData.days.map((day) => {
+              {/* {weatherData.days.map((day) => {
                  return <Day dayInfo={day} />
-              })}
+              })} */}
             </div>
           ) : (
-            <div className='empty-days-container'>
-              {dummyData.days.map((day) => {
-                  return <Day dayInfo={day} />
+            <div className='dummy-days-container'>
+              {dummyData.days.map((day, index) => {
+                return <Day dayInfo={day} key={index}/>
               })}
             </div>
           )
@@ -108,3 +110,10 @@ function App() {
 export default App;
 
 
+const Button  = ({children, onClick}) => {
+  return (
+    <button onClick={onClick}>
+      {children}
+    </button>
+  )
+}
