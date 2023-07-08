@@ -5,7 +5,7 @@ const ErrorBox = ({ status, errorMessage }) => {
         return (
             <div>
                 <div className="error-box">
-                    <h1>Oops! Something went wrong!</h1>
+                    <h3>Oops! Something went wrong!</h3>
                     <p>{errorMessage}</p>
                 </div>
             </div>
